@@ -1,6 +1,19 @@
+body { 
+  background-color: rgb(192, 228, 255); 
+  padding: 0; 
+  margin: 0; 
+} 
+
 .App {
   font-family: Arial, sans-serif;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+}
+
+h1 {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  color: #333333;
+  font-style: normal;
 }

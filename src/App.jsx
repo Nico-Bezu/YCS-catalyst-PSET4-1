@@ -22,7 +22,7 @@ function App() {
   // TODO: Implement removeCourse function
 
   const removeCourse = (courseId) => {
-   setselectedCourses([selectedCourses.filter(course => course.id !== courseId)]);
+   setselectedCourses(selectedCourses.filter(course => course.id !== courseId));
   };
 
   const totCredits = selectedCourses.reduce((sum, course) => sum + course.credit, 0);
@@ -37,7 +37,7 @@ function App() {
         <ul>
          {courses.map(courses => {
           return <li key={course.id}>
-            <span> {course.name} {course.code} {course.credits} </span></li>
+            <span> {course.name} {course.code} {course.credits} credits</span></li>
         })}
         <button onClick = {() => addCourse(course)}>Add Course</button>
         </ul>
@@ -47,13 +47,14 @@ function App() {
         <h2>My Schedule</h2>
         {/* TODO: Display the selected courses */}
         <ul>
-         {selectedCourses.map(selectedCourses => {
-          return <li key={selectedCourses}>{selectedCourses}</li>
+         {selectedCourses.map(course => {
+           <li key={course.id}>
+             <span> {course.name} {course.code} {course.credit} credits</span></li>
         })}
          <button onClick = {() => removeCourse(course.id)}>Remove Course</button>
         </ul>
         {/* TODO: Display the total credit hours */}
-        <h3> Total Credit Hours: {totalCredits}</h3>
+        <h3> Total Credit Hours: {totCredits}</h3>
       </div>
     </div>
   );
