@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 
 const courses = [
@@ -10,10 +11,21 @@ const courses = [
 
 function App() {
   // TODO: Implement state for selectedCourses
+   const [selectedCourses, setselectedCourses] = useState([]);
 
   // TODO: Implement addCourse function
 
+  const addCourse = (course) => {
+    setselectedCourses([...selectedCourses, course]);
+  };
+
   // TODO: Implement removeCourse function
+
+  const removeCourse = (courseId) => {
+   setselectedCourses([selectedCourses.filter(course => course.id !== courseId)]);
+  };
+
+  const totCredits = selectedCourses.reduce((sum, course) => sum + course.credit, 0);
 
   return (
     <div className="App">
@@ -22,12 +34,26 @@ function App() {
       <div className="course-list">
         <h2>Available Courses</h2>
         {/* TODO: Display the list of available courses */}
+        <ul>
+         {courses.map(courses => {
+          return <li key={course.id}>
+            <span> {course.name} {course.code} {course.credits} </span></li>
+        })}
+        <button onClick = {() => addCourse(course)}>Add Course</button>
+        </ul>
       </div>
       
       <div className="schedule">
         <h2>My Schedule</h2>
         {/* TODO: Display the selected courses */}
+        <ul>
+         {selectedCourses.map(selectedCourses => {
+          return <li key={selectedCourses}>{selectedCourses}</li>
+        })}
+         <button onClick = {() => removeCourse(course.id)}>Remove Course</button>
+        </ul>
         {/* TODO: Display the total credit hours */}
+        <h3> Total Credit Hours: {totalCredits}</h3>
       </div>
     </div>
   );
